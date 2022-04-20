@@ -21,18 +21,18 @@ const handleUserInput = (key) => {
     [DOWN_KEY]: 'Move: down',
     [RIGHT_KEY]: 'Move: right',
 
-  }
+  };
 
   const messageObj = {
     [MESSAGE_ONE]: 'Say: That was easy',
     [MESSAGE_TWO]: 'Say: Blocked!!',
     [MESSAGE_THREE]: 'Say: You got lucky'
-  }
+  };
 
   // Determines type of input from key and responds accordingly with movement, message, etc
   if (inputObj[key]) {
 
-    if(movement) {
+    if (movement) {
       clearInterval(movement);
     }
   
@@ -41,8 +41,8 @@ const handleUserInput = (key) => {
     }, SPEED);
 
   } else if (messageObj[key]) {
-    connection.write(messageObj[key])
-  } else if (key === '\u0003'){
+    connection.write(messageObj[key]);
+  } else if (key === '\u0003') {
     process.exit();
   } else {
     console.log('Invalid key');

@@ -1,5 +1,5 @@
 const IP = 'localhost';
-const PORT = 50541
+const PORT = 50541;
 
 const UP_KEY = 'w';
 const LEFT_KEY = 'a';
@@ -21,4 +21,4 @@ module.exports = {
   MESSAGE_TWO,
   MESSAGE_THREE,
   SPEED
-}
+};
