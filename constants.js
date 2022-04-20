@@ -8,6 +8,7 @@ const RIGHT_KEY = 'd';
 const MESSAGE_ONE = '1';
 const MESSAGE_TWO = '2';
 const MESSAGE_THREE = '3';
+const SPEED = 100;
 
 module.exports = {
   IP,
@@ -18,5 +19,6 @@ module.exports = {
   RIGHT_KEY,
   MESSAGE_ONE,
   MESSAGE_TWO,
-  MESSAGE_THREE
+  MESSAGE_THREE,
+  SPEED
 }

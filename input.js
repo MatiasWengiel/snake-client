@@ -6,6 +6,7 @@ const {
   MESSAGE_ONE,
   MESSAGE_TWO,
   MESSAGE_THREE,
+  SPEED
 } = require('./constants');
 
 let connection;
@@ -37,7 +38,7 @@ const handleUserInput = (key) => {
   
     movement = setInterval(() => {
       connection.write(inputObj[key]);
-    }, 1000);
+    }, SPEED);
 
   } else if (messageObj[key]) {
     connection.write(messageObj[key])
