@@ -15,7 +15,7 @@ let movement;
 
 const handleUserInput = (key) => {
  
-  const inputObj = {
+  const moveInput = {
     [UP_KEY]: 'Move: up',
     [LEFT_KEY]: 'Move: left',
     [DOWN_KEY]: 'Move: down',
@@ -23,25 +23,31 @@ const handleUserInput = (key) => {
 
   };
 
-  const messageObj = {
+  const messageInput = {
     [MESSAGE_ONE]: 'Say: That was easy',
     [MESSAGE_TWO]: 'Say: Blocked!!',
     [MESSAGE_THREE]: 'Say: You got lucky'
   };
 
   // Determines type of input from key and responds accordingly with movement, message, etc
-  if (inputObj[key]) {
+  if (moveInput[key]) {
+
+    /* Note for mentor: I made the snake so that it moves in the last direction it was pointed, like the original game. That's why I have the setInterval code. For the original specs, I would just have the following instead:
+
+    connection.write(moveInput[key]) */
 
     if (movement) {
       clearInterval(movement);
     }
   
     movement = setInterval(() => {
-      connection.write(inputObj[key]);
+      connection.write(moveInput[key]);
     }, SPEED);
 
-  } else if (messageObj[key]) {
-    connection.write(messageObj[key]);
+  } else if (messageInput[key]) {
+    //Prevents message inputs from stopping the movement of the snake
+    connection.write(messageInput[key]);
+
   } else if (key === '\u0003') {
     process.exit();
   } else {
@@ -50,12 +56,11 @@ const handleUserInput = (key) => {
 
 };
 
-const setupInput = function(conn) {
+const setupInput = (conn) => {
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
   stdin.resume();
-
 
   connection = conn;
 
